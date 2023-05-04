@@ -6,13 +6,13 @@ import { MoviesService } from '../../services/movies.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   constructor(private moviesService: MoviesService) {}
   movies: any = [];
 
   ngOnInit(): void {
     this.moviesService.getMovies().subscribe((res: any) => {
-      this.movies = res.results; 
+      this.movies = res.results;
     });
   }
 }
