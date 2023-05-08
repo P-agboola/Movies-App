@@ -14,14 +14,14 @@ export class HomeComponent {
   topRatedMovies: Movie[] = [];
 
   ngOnInit(): void {
-    this.moviesService.getMovies('popular').subscribe((res: any) => {
-      this.popularMovies = res.results;
+    this.moviesService.getMovies('popular').subscribe((movies) => {
+      this.popularMovies = movies;
     });
-    this.moviesService.getMovies('upcoming').subscribe((res: any) => {
-      this.upComingMovies = res.results;
+    this.moviesService.getMovies('upcoming').subscribe((movies) => {
+      this.upComingMovies = movies;
     });
-    this.moviesService.getMovies('top_rated').subscribe((res: any) => {
-      this.topRatedMovies = res.results;
+    this.moviesService.getMovies('top_rated').subscribe((movies) => {
+      this.topRatedMovies = movies;
     });
   }
 }
