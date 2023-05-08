@@ -5,8 +5,9 @@ import {
   transition,
   trigger
 } from '@angular/animations';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Movie } from '../../models/movie';
+import { IMAGES_SIZES } from '../../constants/images-sizes';
 
 @Component({
   selector: 'slider',
@@ -21,6 +22,8 @@ import { Movie } from '../../models/movie';
 })
 export class SliderComponent {
   @Input() items: Movie[] = [];
+
+  readonly imagesSizes = IMAGES_SIZES;
 
   currentSlideIndex: number = 0;
 
