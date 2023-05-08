@@ -13,8 +13,14 @@ export class MoviesComponent {
   movies: Movie[] = [];
 
   ngOnInit(): void {
-    this.moviesService.searchMovies(2).subscribe((movies) => {
+    this.getPageMovies(1);
+  }
+  getPageMovies(page: number) {
+    this.moviesService.searchMovies(page).subscribe((movies) => {
       this.movies = movies;
     });
+  }
+  paginate(event: any) {
+    this.getPageMovies(event.page + 1);
   }
 }
