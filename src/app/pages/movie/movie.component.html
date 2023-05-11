@@ -30,12 +30,6 @@
             <div class="value">{{ movie.revenue | currency }}</div>
           </div>
           <div class="stat">
-            <div class="label">Revenue:</div>
-            <div class="value">
-              {{ movie.revenue | currency }}
-            </div>
-          </div>
-          <div class="stat">
             <div class="label">Duration:</div>
             <div class="value">{{ movie.runtime }} min</div>
           </div>
@@ -66,6 +60,28 @@
         </ng-container>
       </div>
     </p-tabPanel>
-    <p-tabPanel header="Photos"></p-tabPanel>
+    <p-tabPanel header="Photos">
+      <div class="grid">
+        <ng-container *ngFor="let movieImage of movieImages?.backdrops">
+          <div class="col-12 md:col-4 lg:col-4">
+            <p-image
+              [src]="imagesSizes.large + movieImage.file_path"
+              alt="Image"
+              width="100%"
+              [preview]="true"
+            ></p-image>
+          </div>
+        </ng-container>
+      </div>
+    </p-tabPanel>
   </p-tabView>
+  <p-carousel [numVisible]="5" *ngIf="movieCredits" [value]="movieCredits.cast">
+    <ng-template let-actor pTemplate="item">
+      <div class="actor">
+        <img [src]="imagesSizes.medium + actor.profile_path" alt="" />
+        <span>{{ actor.name }}</span>
+      </div>
+    </ng-template>
+  </p-carousel>
+  <items-banner [items]="similarMovies" title="Similar Movies"></items-banner>
 </ng-container>
